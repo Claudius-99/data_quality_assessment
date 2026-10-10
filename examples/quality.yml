@@ -1,0 +1,74 @@
+schema_version: 1
+specimen: true
+datasource:
+  name: demo_ledger
+  url: duckdb:///./warehouse.duckdb
+output:
+  dir: .dq
+  snapshot: dashboard/data/snapshot.json
+  history_limit: 50
+  worst_columns: 10
+tables:
+  customers:
+    completeness:
+    - column: email
+      max_null_ratio: 0.0
+    uniqueness:
+    - columns:
+      - customer_id
+    validity:
+    - column: status
+      accepted_values:
+      - active
+      - closed
+    - column: email
+      pattern: ^[^@]+@[^@]+\.[^@]+$
+    freshness:
+    - column: updated_at
+      max_age_hours: 72
+  accounts:
+    completeness:
+    - column: product
+      max_null_ratio: 0.0
+    uniqueness:
+    - columns:
+      - account_id
+    validity:
+    - column: status
+      accepted_values:
+      - active
+      - closed
+  transactions:
+    completeness:
+    - column: amount
+      max_null_ratio: 0.0
+    uniqueness:
+    - columns:
+      - txn_id
+    validity:
+    - column: amount
+      min: 0.01
+      max: 100000
+    freshness:
+    - column: posted_at
+      max_age_hours: 168
+    drift:
+    - column: amount
+      kind: numeric
+    - column: channel
+      kind: categorical
+relationships:
+- name: accounts_customer
+  child: accounts
+  child_columns:
+  - customer_id
+  parent: customers
+  parent_columns:
+  - customer_id
+- name: transactions_account
+  child: transactions
+  child_columns:
+  - account_id
+  parent: accounts
+  parent_columns:
+  - account_id
