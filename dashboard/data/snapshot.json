@@ -1,0 +1,596 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-10-10T08:50:13.569161+00:00",
+  "specimen": true,
+  "specimen_label": "Specimen, not client data",
+  "current_run": {
+    "run_id": "demo-03-recovery",
+    "as_of": "2026-03-25T00:00:00+00:00",
+    "started_at": "2026-10-10T08:50:13.480182+00:00",
+    "finished_at": "2026-10-10T08:50:13.566337+00:00",
+    "datasource_name": "demo_ledger",
+    "datasource_url": "duckdb:////workspace/.dq/demo.duckdb",
+    "config_fingerprint": "42a30c0dd8eeb20d",
+    "overall_status": "pass",
+    "exit_code": 0
+  },
+  "tables": [
+    {
+      "name": "customers",
+      "row_count": 200,
+      "status": "pass",
+      "dimensions": {
+        "completeness": {
+          "status": "pass",
+          "check_count": 1,
+          "fail_count": 0,
+          "warn_count": 0,
+          "pass_count": 1
+        },
+        "uniqueness": {
+          "status": "pass",
+          "check_count": 1,
+          "fail_count": 0,
+          "warn_count": 0,
+          "pass_count": 1
+        },
+        "validity": {
+          "status": "pass",
+          "check_count": 2,
+          "fail_count": 0,
+          "warn_count": 0,
+          "pass_count": 2
+        },
+        "referential_integrity": {
+          "status": "not_evaluated",
+          "check_count": 0,
+          "fail_count": 0,
+          "warn_count": 0,
+          "pass_count": 0
+        },
+        "freshness": {
+          "status": "pass",
+          "check_count": 1,
+          "fail_count": 0,
+          "warn_count": 0,
+          "pass_count": 1
+        },
+        "drift": {
+          "status": "not_evaluated",
+          "check_count": 0,
+          "fail_count": 0,
+          "warn_count": 0,
+          "pass_count": 0
+        }
+      },
+      "checks": [
+        {
+          "id": "completeness.customers.email",
+          "dimension": "completeness",
+          "check_type": "null_ratio",
+          "columns": [
+            "email"
+          ],
+          "status": "pass",
+          "observed": {
+            "row_count": 200,
+            "failed_count": 0,
+            "failed_ratio": 0.0
+          },
+          "message": "0 of 200 rows missing email",
+          "skip_reason": null
+        },
+        {
+          "id": "uniqueness.customers.customer_id",
+          "dimension": "uniqueness",
+          "check_type": "unique_key",
+          "columns": [
+            "customer_id"
+          ],
+          "status": "pass",
+          "observed": {
+            "row_count": 200,
+            "failed_count": 0,
+            "failed_ratio": 0.0
+          },
+          "message": "0 rows in 0 duplicate key groups",
+          "skip_reason": null
+        },
+        {
+          "id": "validity.customers.status.accepted_values",
+          "dimension": "validity",
+          "check_type": "accepted_values",
+          "columns": [
+            "status"
+          ],
+          "status": "pass",
+          "observed": {
+            "row_count": 200,
+            "failed_count": 0,
+            "failed_ratio": 0.0
+          },
+          "message": "0 of 200 non-null values failed accepted_values",
+          "skip_reason": null
+        },
+        {
+          "id": "validity.customers.email.pattern",
+          "dimension": "validity",
+          "check_type": "pattern",
+          "columns": [
+            "email"
+          ],
+          "status": "pass",
+          "observed": {
+            "row_count": 200,
+            "failed_count": 0,
+            "failed_ratio": 0.0
+          },
+          "message": "0 of 200 non-null values failed pattern",
+          "skip_reason": null
+        },
+        {
+          "id": "freshness.customers.updated_at",
+          "dimension": "freshness",
+          "check_type": "max_age",
+          "columns": [
+            "updated_at"
+          ],
+          "status": "pass",
+          "observed": {
+            "row_count": 200,
+            "failed_count": 0,
+            "failed_ratio": 0.0,
+            "age_hours": 2.0
+          },
+          "message": "newest updated_at is 2.0h before as_of (limit 72h)",
+          "skip_reason": null
+        }
+      ]
+    },
+    {
+      "name": "accounts",
+      "row_count": 280,
+      "status": "pass",
+      "dimensions": {
+        "completeness": {
+          "status": "pass",
+          "check_count": 1,
+          "fail_count": 0,
+          "warn_count": 0,
+          "pass_count": 1
+        },
+        "uniqueness": {
+          "status": "pass",
+          "check_count": 1,
+          "fail_count": 0,
+          "warn_count": 0,
+          "pass_count": 1
+        },
+        "validity": {
+          "status": "pass",
+          "check_count": 1,
+          "fail_count": 0,
+          "warn_count": 0,
+          "pass_count": 1
+        },
+        "referential_integrity": {
+          "status": "pass",
+          "check_count": 1,
+          "fail_count": 0,
+          "warn_count": 0,
+          "pass_count": 1
+        },
+        "freshness": {
+          "status": "not_evaluated",
+          "check_count": 0,
+          "fail_count": 0,
+          "warn_count": 0,
+          "pass_count": 0
+        },
+        "drift": {
+          "status": "not_evaluated",
+          "check_count": 0,
+          "fail_count": 0,
+          "warn_count": 0,
+          "pass_count": 0
+        }
+      },
+      "checks": [
+        {
+          "id": "completeness.accounts.product",
+          "dimension": "completeness",
+          "check_type": "null_ratio",
+          "columns": [
+            "product"
+          ],
+          "status": "pass",
+          "observed": {
+            "row_count": 280,
+            "failed_count": 0,
+            "failed_ratio": 0.0
+          },
+          "message": "0 of 280 rows missing product",
+          "skip_reason": null
+        },
+        {
+          "id": "uniqueness.accounts.account_id",
+          "dimension": "uniqueness",
+          "check_type": "unique_key",
+          "columns": [
+            "account_id"
+          ],
+          "status": "pass",
+          "observed": {
+            "row_count": 280,
+            "failed_count": 0,
+            "failed_ratio": 0.0
+          },
+          "message": "0 rows in 0 duplicate key groups",
+          "skip_reason": null
+        },
+        {
+          "id": "validity.accounts.status.accepted_values",
+          "dimension": "validity",
+          "check_type": "accepted_values",
+          "columns": [
+            "status"
+          ],
+          "status": "pass",
+          "observed": {
+            "row_count": 280,
+            "failed_count": 0,
+            "failed_ratio": 0.0
+          },
+          "message": "0 of 280 non-null values failed accepted_values",
+          "skip_reason": null
+        },
+        {
+          "id": "referential_integrity.accounts_customer",
+          "dimension": "referential_integrity",
+          "check_type": "foreign_key",
+          "columns": [
+            "customer_id"
+          ],
+          "status": "pass",
+          "observed": {
+            "row_count": 280,
+            "failed_count": 0,
+            "failed_ratio": 0.0
+          },
+          "message": "0 child rows missing parent customers",
+          "skip_reason": null
+        }
+      ]
+    },
+    {
+      "name": "transactions",
+      "row_count": 1200,
+      "status": "pass",
+      "dimensions": {
+        "completeness": {
+          "status": "pass",
+          "check_count": 1,
+          "fail_count": 0,
+          "warn_count": 0,
+          "pass_count": 1
+        },
+        "uniqueness": {
+          "status": "pass",
+          "check_count": 1,
+          "fail_count": 0,
+          "warn_count": 0,
+          "pass_count": 1
+        },
+        "validity": {
+          "status": "pass",
+          "check_count": 1,
+          "fail_count": 0,
+          "warn_count": 0,
+          "pass_count": 1
+        },
+        "referential_integrity": {
+          "status": "pass",
+          "check_count": 1,
+          "fail_count": 0,
+          "warn_count": 0,
+          "pass_count": 1
+        },
+        "freshness": {
+          "status": "pass",
+          "check_count": 1,
+          "fail_count": 0,
+          "warn_count": 0,
+          "pass_count": 1
+        },
+        "drift": {
+          "status": "pass",
+          "check_count": 2,
+          "fail_count": 0,
+          "warn_count": 0,
+          "pass_count": 2
+        }
+      },
+      "checks": [
+        {
+          "id": "completeness.transactions.amount",
+          "dimension": "completeness",
+          "check_type": "null_ratio",
+          "columns": [
+            "amount"
+          ],
+          "status": "pass",
+          "observed": {
+            "row_count": 1200,
+            "failed_count": 0,
+            "failed_ratio": 0.0
+          },
+          "message": "0 of 1200 rows missing amount",
+          "skip_reason": null
+        },
+        {
+          "id": "uniqueness.transactions.txn_id",
+          "dimension": "uniqueness",
+          "check_type": "unique_key",
+          "columns": [
+            "txn_id"
+          ],
+          "status": "pass",
+          "observed": {
+            "row_count": 1200,
+            "failed_count": 0,
+            "failed_ratio": 0.0
+          },
+          "message": "0 rows in 0 duplicate key groups",
+          "skip_reason": null
+        },
+        {
+          "id": "validity.transactions.amount.range",
+          "dimension": "validity",
+          "check_type": "range",
+          "columns": [
+            "amount"
+          ],
+          "status": "pass",
+          "observed": {
+            "row_count": 1200,
+            "failed_count": 0,
+            "failed_ratio": 0.0
+          },
+          "message": "0 of 1200 non-null values failed range",
+          "skip_reason": null
+        },
+        {
+          "id": "freshness.transactions.posted_at",
+          "dimension": "freshness",
+          "check_type": "max_age",
+          "columns": [
+            "posted_at"
+          ],
+          "status": "pass",
+          "observed": {
+            "row_count": 1200,
+            "failed_count": 0,
+            "failed_ratio": 0.0,
+            "age_hours": 1.0
+          },
+          "message": "newest posted_at is 1.0h before as_of (limit 168h)",
+          "skip_reason": null
+        },
+        {
+          "id": "drift.transactions.amount",
+          "dimension": "drift",
+          "check_type": "psi",
+          "columns": [
+            "amount"
+          ],
+          "status": "pass",
+          "observed": {
+            "row_count": 1200,
+            "failed_count": 0,
+            "failed_ratio": 0.0,
+            "psi": 0.059127
+          },
+          "message": "PSI 0.059 vs previous comparable run",
+          "skip_reason": null
+        },
+        {
+          "id": "drift.transactions.channel",
+          "dimension": "drift",
+          "check_type": "psi",
+          "columns": [
+            "channel"
+          ],
+          "status": "pass",
+          "observed": {
+            "row_count": 1200,
+            "failed_count": 0,
+            "failed_ratio": 0.0,
+            "psi": 0.002461
+          },
+          "message": "PSI 0.002 vs previous comparable run",
+          "skip_reason": null
+        },
+        {
+          "id": "referential_integrity.transactions_account",
+          "dimension": "referential_integrity",
+          "check_type": "foreign_key",
+          "columns": [
+            "account_id"
+          ],
+          "status": "pass",
+          "observed": {
+            "row_count": 1200,
+            "failed_count": 0,
+            "failed_ratio": 0.0
+          },
+          "message": "0 child rows missing parent accounts",
+          "skip_reason": null
+        }
+      ]
+    }
+  ],
+  "history": [
+    {
+      "run_id": "demo-01-baseline",
+      "as_of": "2026-03-15T00:00:00+00:00",
+      "started_at": "2026-10-10T08:50:05.186555+00:00",
+      "overall_status": "pass",
+      "exit_code": 0,
+      "fail_count": 0,
+      "warn_count": 0,
+      "tables": {
+        "customers": "pass",
+        "accounts": "pass",
+        "transactions": "pass"
+      }
+    },
+    {
+      "run_id": "demo-02-degraded",
+      "as_of": "2026-03-22T00:00:00+00:00",
+      "started_at": "2026-10-10T08:50:09.197594+00:00",
+      "overall_status": "fail",
+      "exit_code": 1,
+      "fail_count": 8,
+      "warn_count": 0,
+      "tables": {
+        "customers": "fail",
+        "accounts": "pass",
+        "transactions": "fail"
+      }
+    },
+    {
+      "run_id": "demo-03-recovery",
+      "as_of": "2026-03-25T00:00:00+00:00",
+      "started_at": "2026-10-10T08:50:13.480182+00:00",
+      "overall_status": "pass",
+      "exit_code": 0,
+      "fail_count": 0,
+      "warn_count": 0,
+      "tables": {
+        "customers": "pass",
+        "accounts": "pass",
+        "transactions": "pass"
+      }
+    }
+  ],
+  "worst_columns": [
+    {
+      "table": "transactions",
+      "column": "amount",
+      "status": "fail",
+      "failed_ratio": 1.0,
+      "failed_count": 91,
+      "checks": [
+        {
+          "id": "validity.transactions.amount.range",
+          "dimension": "validity",
+          "status": "fail",
+          "message": "90 of 1215 non-null values failed range"
+        },
+        {
+          "id": "drift.transactions.amount",
+          "dimension": "drift",
+          "status": "fail",
+          "message": "PSI 5.404 vs previous comparable run"
+        }
+      ],
+      "run_id": "demo-02-degraded"
+    },
+    {
+      "table": "customers",
+      "column": "updated_at",
+      "status": "fail",
+      "failed_ratio": 1.0,
+      "failed_count": 1,
+      "checks": [
+        {
+          "id": "freshness.customers.updated_at",
+          "dimension": "freshness",
+          "status": "fail",
+          "message": "newest updated_at is 169.0h before as_of (limit 72h)"
+        }
+      ],
+      "run_id": "demo-02-degraded"
+    },
+    {
+      "table": "transactions",
+      "column": "channel",
+      "status": "fail",
+      "failed_ratio": 1.0,
+      "failed_count": 1,
+      "checks": [
+        {
+          "id": "drift.transactions.channel",
+          "dimension": "drift",
+          "status": "fail",
+          "message": "PSI 0.750 vs previous comparable run"
+        }
+      ],
+      "run_id": "demo-02-degraded"
+    },
+    {
+      "table": "transactions",
+      "column": "posted_at",
+      "status": "fail",
+      "failed_ratio": 1.0,
+      "failed_count": 1,
+      "checks": [
+        {
+          "id": "freshness.transactions.posted_at",
+          "dimension": "freshness",
+          "status": "fail",
+          "message": "newest posted_at is 169.0h before as_of (limit 168h)"
+        }
+      ],
+      "run_id": "demo-02-degraded"
+    },
+    {
+      "table": "customers",
+      "column": "email",
+      "status": "fail",
+      "failed_ratio": 0.192308,
+      "failed_count": 40,
+      "checks": [
+        {
+          "id": "completeness.customers.email",
+          "dimension": "completeness",
+          "status": "fail",
+          "message": "40 of 208 rows missing email"
+        }
+      ],
+      "run_id": "demo-02-degraded"
+    },
+    {
+      "table": "customers",
+      "column": "customer_id",
+      "status": "fail",
+      "failed_ratio": 0.076923,
+      "failed_count": 16,
+      "checks": [
+        {
+          "id": "uniqueness.customers.customer_id",
+          "dimension": "uniqueness",
+          "status": "fail",
+          "message": "16 rows in 8 duplicate key groups"
+        }
+      ],
+      "run_id": "demo-02-degraded"
+    },
+    {
+      "table": "transactions",
+      "column": "account_id",
+      "status": "fail",
+      "failed_ratio": 0.012346,
+      "failed_count": 15,
+      "checks": [
+        {
+          "id": "referential_integrity.transactions_account",
+          "dimension": "referential_integrity",
+          "status": "fail",
+          "message": "15 child rows missing parent accounts"
+        }
+      ],
+      "run_id": "demo-02-degraded"
+    }
+  ]
+}

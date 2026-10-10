@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ledger quality</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <header class="masthead">
+      <p class="kicker">Quality ledger</p>
+      <h1>Check results</h1>
+      <p class="specimen" id="specimen">Specimen, not client data</p>
+      <p class="lede" id="lede">Loading snapshot.</p>
+    </header>
+
+    <p class="banner" id="banner" hidden></p>
+
+    <section aria-labelledby="tables-heading">
+      <h2 id="tables-heading">By table and dimension</h2>
+      <div class="table-wrap">
+        <table class="ledger">
+          <thead>
+            <tr>
+              <th>Table</th>
+              <th>Rows</th>
+              <th>Overall</th>
+              <th>Completeness</th>
+              <th>Uniqueness</th>
+              <th>Validity</th>
+              <th>RI</th>
+              <th>Freshness</th>
+              <th>Drift</th>
+            </tr>
+          </thead>
+          <tbody id="tables-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section aria-labelledby="history-heading">
+      <h2 id="history-heading">Pass / fail history</h2>
+      <div class="table-wrap">
+        <table class="ledger" id="history-table">
+          <thead id="history-head"></thead>
+          <tbody id="history-body"></tbody>
+        </table>
+      </div>
+      <ol class="run-list" id="run-list"></ol>
+    </section>
+
+    <section aria-labelledby="worst-heading">
+      <h2 id="worst-heading">Worst columns</h2>
+      <div class="table-wrap">
+        <table class="ledger">
+          <thead>
+            <tr>
+              <th>Column</th>
+              <th>Status</th>
+              <th>Failed ratio</th>
+              <th>Failed rows</th>
+              <th>Checks</th>
+            </tr>
+          </thead>
+          <tbody id="worst-body"></tbody>
+        </table>
+      </div>
+      <p class="empty" id="worst-empty" hidden>No failing or warning columns in the current run.</p>
+    </section>
+
+    <footer>
+      <p id="foot"></p>
+    </footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>

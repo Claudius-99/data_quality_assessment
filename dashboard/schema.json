@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/data-quality/snapshot.json",
+  "title": "Data quality dashboard snapshot",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "generated_at",
+    "specimen",
+    "specimen_label",
+    "current_run",
+    "tables",
+    "history",
+    "worst_columns"
+  ],
+  "properties": {
+    "schema_version": { "type": "integer", "const": 1 },
+    "generated_at": { "type": "string" },
+    "specimen": { "type": "boolean" },
+    "specimen_label": { "type": "string" },
+    "current_run": {
+      "type": ["object", "null"],
+      "properties": {
+        "run_id": { "type": "string" },
+        "as_of": { "type": "string" },
+        "started_at": { "type": "string" },
+        "finished_at": { "type": "string" },
+        "datasource_name": { "type": "string" },
+        "datasource_url": { "type": "string" },
+        "config_fingerprint": { "type": "string" },
+        "overall_status": { "type": "string" },
+        "exit_code": { "type": "integer" }
+      }
+    },
+    "tables": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "row_count", "status", "dimensions", "checks"],
+        "properties": {
+          "name": { "type": "string" },
+          "row_count": { "type": "integer" },
+          "status": { "type": "string" },
+          "dimensions": { "type": "object" },
+          "checks": { "type": "array" }
+        }
+      }
+    },
+    "history": { "type": "array" },
+    "worst_columns": { "type": "array" }
+  }
+}
