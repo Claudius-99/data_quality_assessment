@@ -3,10 +3,9 @@ from __future__ import annotations
 from datetime import datetime, timezone
 from pathlib import Path
 
-from tests.conftest import seed_engine
-
 from data_quality.config import parse_config
 from data_quality.runner import run_assessment
+from tests.helpers import seed_engine
 
 
 def _run(tmp_path: Path, url: str, tables: dict, extra: dict | None = None, as_of: datetime | None = None):

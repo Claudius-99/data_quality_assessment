@@ -4,12 +4,12 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 import pytest
-from tests.conftest import seed_engine
 
 from data_quality.config import parse_config
 from data_quality.models import EXIT_DATA, EXIT_OK
 from data_quality.runner import run_assessment
 from data_quality.source import SourceError
+from tests.helpers import seed_engine
 
 
 def _cfg(tmp_path: Path, url: str, tables: dict):
